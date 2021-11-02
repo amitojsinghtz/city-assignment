@@ -1,16 +1,10 @@
 import React from "react";
 import { Form as BForm, Row, Col } from "react-bootstrap";
-import * as Yup from "yup";
 import { Formik } from "formik";
 import { FormInput } from "../components/Input";
 import Button from "react-bootstrap/Button";
 import { nanoid } from "nanoid";
 
-const FormSchema = Yup.object().shape({
-  title: Yup.string().required("Title is required"),
-  description: Yup.string().required("Description is required"),
-  color: Yup.string().required("Color is required"),
-});
 
 const CityForm = (props) => {
   const { cities, cityData, handleFormSubmit, handleFormClose } = props;
@@ -36,7 +30,6 @@ const CityForm = (props) => {
     <>
       <Formik
         initialValues={initialValues}
-        validationSchema={FormSchema}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
           submitCityHandler(values);
